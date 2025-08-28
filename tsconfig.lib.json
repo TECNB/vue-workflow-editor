@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "declaration": true,
+    "declarationDir": "dist/types",
+    "emitDeclarationOnly": false,
+    "skipLibCheck": true
+  },
+  "include": [
+    "lib/**/*",
+    "src/components/Workflow/WorkflowToolbar.vue",
+    "src/components/Workflow/PublishDialog.vue"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/main.ts",
+    "src/App.vue",
+    "**/*.test.*",
+    "**/*.spec.*"
+  ]
+}

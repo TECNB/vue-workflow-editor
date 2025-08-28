@@ -83,7 +83,7 @@ import { defineEmits, defineProps, ref } from 'vue';
 import PublishDialog from './PublishDialog.vue';
 
 // 定义属性
-const props = defineProps<{
+defineProps<{
   scale: number;
 }>();
 
@@ -149,4 +149,4 @@ const onViewDocs = () => {
     }
   }
 }
-</style> 
+</style>

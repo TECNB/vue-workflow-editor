@@ -1,11 +1,39 @@
 {
-  "name": "vue-workflow-editor",
-  "private": true,
-  "version": "0.0.0",
+  "name": "vue3-workflow-editor",
+  "private": false,
+  "version": "1.0.0",
   "type": "module",
+  "main": "dist/vue3-workflow-editor.umd.js",
+  "module": "dist/vue3-workflow-editor.es.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/vue3-workflow-editor.es.js",
+      "require": "./dist/vue3-workflow-editor.umd.js",
+      "types": "./dist/types/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "vue",
+    "vue3",
+    "workflow",
+    "editor",
+    "toolbar",
+    "component"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TECNB/vue-workflow-editor.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
+    "build:lib": "vue-tsc --project tsconfig.lib.json && vite build --config vite.lib.config.ts",
     "preview": "vite preview"
   },
   "dependencies": {
