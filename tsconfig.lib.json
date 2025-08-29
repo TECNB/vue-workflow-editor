@@ -10,7 +10,12 @@
   "include": [
     "lib/**/*",
     "src/components/Workflow/WorkflowToolbar.vue",
-    "src/components/Workflow/PublishDialog.vue"
+    "src/components/Workflow/PublishDialog.vue",
+    "src/components/Workflow/PropertyEditor.vue",
+    "src/components/Workflow/NodeProperties/**/*",
+    "src/types/workflow.ts",
+    "src/stores/workflowStore.ts",
+    "src/stores/index.ts"
   ],
   "exclude": [
     "node_modules",

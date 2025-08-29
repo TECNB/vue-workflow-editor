@@ -5,12 +5,12 @@
   "type": "module",
   "main": "dist/vue3-workflow-editor.umd.js",
   "module": "dist/vue3-workflow-editor.es.js",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/vue3-workflow-editor.es.js",
-      "require": "./dist/vue3-workflow-editor.umd.js",
-      "types": "./dist/types/index.d.ts"
+      "require": "./dist/vue3-workflow-editor.umd.js"
     }
   },
   "files": [
@@ -55,6 +55,7 @@
     "unplugin-auto-import": "^20.0.0",
     "unplugin-vue-components": "^29.0.0",
     "vite": "^7.1.2",
+    "vite-plugin-dts": "^4.5.4",
     "vue-tsc": "^3.0.5"
   }
 }

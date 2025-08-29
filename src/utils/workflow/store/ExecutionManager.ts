@@ -79,9 +79,9 @@ export class ExecutionManager {
                 error?: string
             }
         }>,
-        inputValues: Record<string, any>
+        _inputValues: Record<string, any>
     ): boolean {
-        this.logger.log(`开始运行工作流，输入变量:`, inputValues);
+        this.logger.log(`开始运行工作流，输入变量:`, _inputValues);
 
         // 清空之前的结果
         result.value = '';
@@ -91,7 +91,7 @@ export class ExecutionManager {
         // 将输入值设置为开始节点的outputValues
         const startNode = nodes.find(node => node.type === 'start');
         if (startNode) {
-            startNode.outputValues = { ...inputValues };
+            startNode.outputValues = { ..._inputValues };
             startNode.runInfo = {
                 status: NodeRunStatus.COMPLETED,
                 startTime: Date.now(),
@@ -226,7 +226,7 @@ export class ExecutionManager {
     private prepareKnowledgeNodeExecution(
         nodes: Node[],
         nodeId: string,
-        inputValues: Record<string, any>
+        _inputValues: Record<string, any>
     ): void {
         const node = nodes.find(n => n.id === nodeId);
 
@@ -529,4 +529,4 @@ export class ExecutionManager {
             this.logger.log(`添加节点执行轨迹: ${nodeName}, 状态: ${message}`);
         }
     }
-} 
+}

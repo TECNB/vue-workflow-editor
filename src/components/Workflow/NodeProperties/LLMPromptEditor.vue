@@ -85,7 +85,7 @@ const highlightedParts = computed(() => {
 });
 
 // 光标位置相关
-const { cursorPosition, getCursorPosition } = useCursorPosition();
+const { cursorPosition } = useCursorPosition();
 
 // 编辑控制函数
 const startEditing = (event?: MouseEvent) => {
@@ -187,7 +187,7 @@ const handleInput = (event: Event) => {
 };
 
 // 处理按键事件
-const handleKeyDown = (event: KeyboardEvent) => {
+const handleKeyDown = (_event: KeyboardEvent) => {
   // 可以添加键盘快捷键处理逻辑
 };
 
@@ -322,4 +322,4 @@ onMounted(() => {
   word-break: normal;
   display: inline;
 }
-</style> 
+</style>

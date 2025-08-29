@@ -1,6 +1,6 @@
 # Vue3 Workflow Editor
 
-一个基于Vue3的工作流编辑器工具栏组件，提供缩放控制、保存、运行、重置和发布等功能。
+一个基于Vue3的工作流编辑器组件库，包含工具栏组件和属性编辑器组件，提供完整的工作流编辑功能。
 
 ## 特性
 
@@ -43,7 +43,7 @@ export default {
 }
 ```
 
-### 在模板中使用
+### WorkflowToolbar 使用示例
 
 ```vue
 <template>
@@ -91,6 +91,29 @@ const handleReset = () => {
 const handlePublish = (data) => {
   console.log('发布工作流', data)
 }
+</script>
+```
+
+### PropertyEditor 使用示例
+
+```vue
+<template>
+  <div class="flex">
+    <div class="flex-1">
+      <!-- 工作流画布区域 -->
+      <div class="workflow-canvas">
+        <!-- 您的工作流画布内容 -->
+      </div>
+    </div>
+    <div class="w-80">
+      <!-- 属性编辑器 -->
+      <PropertyEditor />
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { PropertyEditor } from 'vue3-workflow-editor'
 </script>
 ```
 
@@ -145,13 +168,35 @@ const handlePublish = (data) => {
 </html>
 ```
 
-## Props
+## 组件列表
+
+### 主要组件
+- `WorkflowToolbar` - 工作流工具栏组件
+- `PropertyEditor` - 属性编辑器组件
+- `PublishDialog` - 发布对话框组件
+
+### 属性编辑器子组件
+- `IOEditor` - 输入输出编辑器
+- `LLMProperties` - LLM节点属性编辑器
+- `KnowledgeProperties` - 知识库节点属性编辑器
+- `ConditionalProperties` - 条件节点属性编辑器
+- `StartProperties` - 开始节点属性编辑器
+- `OutputProperties` - 输出节点属性编辑器
+- `SearchProperties` - 搜索节点属性编辑器
+- `LLMPromptEditor` - LLM提示词编辑器
+- `VariableSuggestions` - 变量建议组件
+
+## API 文档
+
+### WorkflowToolbar
+
+#### Props
 
 | 属性名 | 类型 | 必填 | 默认值 | 说明 |
 |--------|------|------|--------|------|
 | scale | number | 是 | - | 当前缩放比例 |
 
-## Events
+#### Events
 
 | 事件名 | 参数 | 说明 |
 |--------|------|------|
@@ -162,6 +207,21 @@ const handlePublish = (data) => {
 | run | { timestamp, source } | 运行工作流 |
 | reset | - | 重置工作流 |
 | publish | { timestamp, source } | 发布工作流 |
+
+### PropertyEditor
+
+#### Props
+
+无需传入props，PropertyEditor会自动从工作流状态管理中获取选中节点信息。
+
+#### 功能特性
+
+- 自动检测选中的节点类型
+- 根据节点类型显示相应的属性编辑界面
+- 支持多种节点类型：开始节点、LLM节点、知识库节点、条件节点、搜索节点、输出节点
+- 实时保存属性更改
+- 支持输入输出变量配置
+- 提供变量建议和高亮显示
 
 ## 依赖
 
@@ -193,6 +253,13 @@ npm run preview
 MIT
 
 ## 更新日志
+
+### 1.0.1
+- 新增 PropertyEditor 属性编辑器组件
+- 新增多种节点属性编辑器子组件
+- 支持LLM、知识库、条件、搜索等节点类型
+- 增强的变量管理和提示功能
+- 完善的TypeScript类型支持
 
 ### 1.0.0
 - 初始版本

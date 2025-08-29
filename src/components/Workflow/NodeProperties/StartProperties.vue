@@ -6,7 +6,7 @@
       <label class="block text-sm font-medium text-gray-700 mb-1">初始变量</label>
       <div class="space-y-4">
         <div 
-          v-for="(variable, index) in startConfig.variables" 
+          v-for="(_variable, index) in startConfig.variables" 
           :key="`variable-${index}`"
           class="flex items-center gap-2 relative"
         >

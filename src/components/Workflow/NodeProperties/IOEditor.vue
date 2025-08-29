@@ -5,7 +5,7 @@
       <label class="block text-sm font-medium text-gray-700 mb-1">输入变量</label>
       <div class="space-y-2">
         <div 
-          v-for="(input, index) in localIO.inputs" 
+          v-for="(_input, index) in localIO.inputs" 
           :key="`input-${index}`"
           class="flex items-center gap-2"
         >
@@ -66,7 +66,7 @@
       <label class="block text-sm font-medium text-gray-700 mb-1">输出变量</label>
       <div class="space-y-2">
         <div 
-          v-for="(output, index) in localIO.outputs" 
+          v-for="(_output, index) in localIO.outputs" 
           :key="`output-${index}`"
           class="flex items-center gap-2"
         >

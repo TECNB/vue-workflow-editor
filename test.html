@@ -15,7 +15,7 @@
       <h1 class="text-2xl font-bold mb-6">Vue3 Workflow Editor 测试</h1>
       
       <!-- 测试 WorkflowToolbar 组件 -->
-      <div class="border border-gray-300 rounded-lg overflow-hidden">
+      <div class="border border-gray-300 rounded-lg overflow-hidden mb-6">
         <workflow-toolbar 
           :scale="scale"
           @zoom-in="handleZoomIn"
@@ -28,37 +28,48 @@
         ></workflow-toolbar>
       </div>
       
-      <!-- 事件日志 -->
-      <div class="mt-8">
-        <h2 class="text-lg font-semibold mb-4">事件日志</h2>
-        <div class="bg-gray-100 p-4 rounded-lg max-h-60 overflow-y-auto">
-          <div v-for="(log, index) in eventLogs" :key="index" class="mb-2 text-sm">
-            <span class="text-gray-500">{{ log.time }}</span> - 
-            <span class="font-medium">{{ log.event }}</span>
-            <span v-if="log.data" class="text-gray-600">: {{ JSON.stringify(log.data) }}</span>
+      <!-- 组件信息 -->
+      <div class="border border-gray-300 rounded-lg overflow-hidden">
+        <h2 class="text-lg font-semibold p-4 border-b border-gray-200 bg-gray-50">组件库信息</h2>
+        <div class="p-4">
+          <div class="grid grid-cols-2 gap-4 text-sm">
+            <div>
+              <span class="font-medium text-gray-700">已导出组件：</span>
+              <ul class="mt-2 space-y-1 text-gray-600">
+                <li>• WorkflowToolbar ✅</li>
+                <li>• PropertyEditor ✅</li>
+                <li>• PublishDialog ✅</li>
+                <li>• IOEditor ✅</li>
+                <li>• LLMProperties ✅</li>
+                <li>• KnowledgeProperties ✅</li>
+              </ul>
+            </div>
+            <div>
+              <span class="font-medium text-gray-700">更多子组件：</span>
+              <ul class="mt-2 space-y-1 text-gray-600">
+                <li>• ConditionalProperties ✅</li>
+                <li>• StartProperties ✅</li>
+                <li>• OutputProperties ✅</li>
+                <li>• SearchProperties ✅</li>
+                <li>• LLMPromptEditor ✅</li>
+                <li>• VariableSuggestions ✅</li>
+              </ul>
+            </div>
           </div>
-          <div v-if="eventLogs.length === 0" class="text-gray-500 text-sm">暂无事件</div>
-        </div>
-      </div>
-      
-      <!-- 控制面板 -->
-      <div class="mt-8">
-        <h2 class="text-lg font-semibold mb-4">控制面板</h2>
-        <div class="flex items-center space-x-4">
-          <button @click="clearLogs" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
-            清空日志
-          </button>
-          <div class="text-sm text-gray-600">
-            当前缩放: {{ Math.round(scale * 100) }}%
+          <div class="mt-4 p-3 bg-blue-50 border border-blue-200 rounded">
+            <p class="text-sm text-blue-800">
+              <strong>注意：</strong> PropertyEditor组件需要在Vue项目中使用，依赖Pinia状态管理。
+              CDN方式只能演示WorkflowToolbar组件。
+            </p>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
 
   <script src="./dist/vue3-workflow-editor.umd.js"></script>
   <script>
     const { createApp, ref } = Vue;
+    
+    // 检查 Vue3WorkflowEditor 是否正确加载
+    console.log('Vue3WorkflowEditor:', window.Vue3WorkflowEditor);
     
     createApp({
       setup() {
@@ -126,7 +137,7 @@
         };
       }
     })
-    .component('WorkflowToolbar', Vue3WorkflowEditor.WorkflowToolbar)
+    .component('WorkflowToolbar', window.Vue3WorkflowEditor?.WorkflowToolbar)
     .mount('#app');
   </script>
 </body>
